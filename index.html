@@ -2,8 +2,8 @@
 <html>
 <body>
 <p id="request">测试摇一摇1g：</p>
-<p id="demo2">测试摇一摇2g：</p>
-<p id="demo3">测试摇一摇3g：</p>
+<p id="demo2">测试摇一摇2f：</p>
+<p id="demo3">测试摇一摇3f：</p>
 <!-- <button onclick="testshake()">试一下</button> -->
 <script>
     alert("test");
@@ -23,42 +23,42 @@
 // //   "<br />Longitude: " + position.coords.longitude;	
 // //   }
 
-//     if(window.DeviceMotionEvent) {
-//         alert("ceshi1")
-//     var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
-//     var x, y, z, lastX, lastY, lastZ;
-//     x = y = z = lastX = lastY = lastZ = 0;
+    if(window.DeviceMotionEvent) {
+        alert("ceshi1")
+    var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
+    var x, y, z, lastX, lastY, lastZ;
+    x = y = z = lastX = lastY = lastZ = 0;
 
-//     window.addEventListener('devicemotion', function(event){
-//         var acceleration = event.accelerationIncludingGravity;
-//         x = acceleration.x;
-//         y = acceleration.y;
-//         if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
-//             // 用户设备摇动了，触发响应操作
-//             // 此处的判断依据是用户设备的加速度大于我们设置的阈值
-//             alert('摇了');
-//             x.innerHTML="扶摇直上九万里"+event.acceleration.x;
-//         }
-//         lastX = x;
-//         lastY = y;
-//     }, false);}else{
-//         x.innerHTML="不支持该事件";
-//     }
+    window.addEventListener('devicemotion', function(event){
+        var acceleration = event.accelerationIncludingGravity;
+        x = acceleration.x;
+        y = acceleration.y;
+        if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
+            // 用户设备摇动了，触发响应操作
+            // 此处的判断依据是用户设备的加速度大于我们设置的阈值
+            alert('摇了');
+            x.innerHTML="扶摇直上九万里"+event.acceleration.x;
+        }
+        lastX = x;
+        lastY = y;
+    }, false);}else{
+        x.innerHTML="不支持该事件";
+    }
 
-//     window.addEventListener('devicemotion', function(event) {
-//         console.log(event);
-//         document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
-//     });
+    window.addEventListener('devicemotion', function(event) {
+        console.log(event);
+        document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
+    });
 
-//     if(window.DeviceOrientationEvent){
-//         alert("ceshi2");
-//         window.addEventListener('deviceorientation', function(event) {
-//         alert("摇了2");
-//         console.log(event);
-//         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
-//     })}else{
-//         document.getElementById("demo3").innerHTML="没有该事件";
-//     };
+    if(window.DeviceOrientationEvent){
+        alert("ceshi2");
+        window.addEventListener('deviceorientation', function(event) {
+        alert("摇了2");
+        console.log(event);
+        document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
+    })}else{
+        document.getElementById("demo3").innerHTML="没有该事件";
+    };
   if (location.protocol != 'https:') {
    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
   }
