@@ -10,7 +10,8 @@ if(window.DeviceOrientationEvent){
             alert('摇了');
         }
         lastAcc = event;    // 存储上一次的event
-    })
+    })}
+    
     if(window.DeviceMotionEvent) {
         var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
         var x, y, z, lastX, lastY, lastZ;
@@ -28,4 +29,5 @@ if(window.DeviceOrientationEvent){
             lastX = x;
             lastY = y;
         }, false);
-    }
+    };
+console.log("abc");
