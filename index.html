@@ -2,8 +2,8 @@
 <html>
 <body>
 <p id="demo">测试摇一摇1：</p>
-<p id="demo2">测试摇一摇2b：</p>
-<p id="demo3">测试摇一摇3b：</p>
+<p id="demo2">测试摇一摇2g：</p>
+<p id="demo3">测试摇一摇3g：</p>
 <!-- <button onclick="testshake()">试一下</button> -->
 <script>
     alert("test");
@@ -50,8 +50,10 @@ x.innerHTML="扶摇直上九万里";
         document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
     });
 
-    if(window.DeviceOrientationEvent){window.addEventListener('deviceorientation', function(event) {
+    if(window.DeviceOrientationEvent){
         alert("ceshi2")
+        window.addEventListener('deviceorientation', function(event) {
+        alert("摇了2")
         console.log(event);
         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
     })}else{
