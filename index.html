@@ -48,10 +48,12 @@ x.innerHTML="扶摇直上九万里";
         document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
     });
 
-    window.addEventListener('deviceorientation', function(event) {
+    if(window.DeviceOrientationEvent){window.addEventListener('deviceorientation', function(event) {
         console.log(event);
         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
-    });
+    })}else{
+        document.getElementById("demo3").innerHTML="没有该事件";
+    };
 </script>
 </body>
 </html>
