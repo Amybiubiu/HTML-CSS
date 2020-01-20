@@ -51,9 +51,9 @@ x.innerHTML="扶摇直上九万里";
     });
 
     if(window.DeviceOrientationEvent){
-        alert("ceshi2")
+        alert("ceshi2");
         window.addEventListener('deviceorientation', function(event) {
-        alert("摇了2")
+        alert("摇了2");
         console.log(event);
         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
     })}else{
