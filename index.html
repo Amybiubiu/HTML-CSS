@@ -2,11 +2,12 @@
 <html>
 <body>
 <p id="demo">测试摇一摇1：</p>
-<p id="demo2">测试摇一摇2：</p>
-<p id="demo3">测试摇一摇3：</p>
+<p id="demo2">测试摇一摇2c：</p>
+<p id="demo3">测试摇一摇3c：</p>
 <!-- <button onclick="testshake()">试一下</button> -->
 <script>
 var x=document.getElementById("demo");
+x.innerHTML="扶摇直上九万里";
 // function getLocation()
 //   {
 //   if (navigator.geolocation)
@@ -43,10 +44,12 @@ var x=document.getElementById("demo");
     }
 
     window.addEventListener('devicemotion', function(event) {
+        console.log(event);
         document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
     });
 
     window.addEventListener('deviceorientation', function(event) {
+        console.log(event);
         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
     });
 </script>
