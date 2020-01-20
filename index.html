@@ -2,10 +2,11 @@
 <html>
 <body>
 <p id="demo">测试摇一摇1：</p>
-<p id="demo2">测试摇一摇2c：</p>
-<p id="demo3">测试摇一摇3c：</p>
+<p id="demo2">测试摇一摇2b：</p>
+<p id="demo3">测试摇一摇3b：</p>
 <!-- <button onclick="testshake()">试一下</button> -->
 <script>
+    alert("test");
 var x=document.getElementById("demo");
 x.innerHTML="扶摇直上九万里";
 // function getLocation()
@@ -23,6 +24,7 @@ x.innerHTML="扶摇直上九万里";
 //   }
 
     if(window.DeviceMotionEvent) {
+        alert("ceshi1")
     var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
     var x, y, z, lastX, lastY, lastZ;
     x = y = z = lastX = lastY = lastZ = 0;
@@ -49,6 +51,7 @@ x.innerHTML="扶摇直上九万里";
     });
 
     if(window.DeviceOrientationEvent){window.addEventListener('deviceorientation', function(event) {
+        alert("ceshi2")
         console.log(event);
         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
     })}else{
