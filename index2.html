@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p id="demo">点击这个按钮，获得您的坐标：</p>
-<button onclick="getLocation()">试一下</button>
+<p id="demo">测试摇一摇1：</p>
+<p id="demo2">测试摇一摇2：</p>
+<p id="demo3">测试摇一摇3：</p>
+<!-- <button onclick="testshake()">试一下</button> -->
 <script>
 var x=document.getElementById("demo");
-function getLocation()
-  {
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
+// function getLocation()
+//   {
+//   if (navigator.geolocation)
+//     {
+//     navigator.geolocation.getCurrentPosition(showPosition);
+//     }
+//   else{x.innerHTML="Geolocation is not supported by this browser.";}
+//   }
+// function showPosition(position)
+//   {
+//   x.innerHTML="Latitude: " + position.coords.latitude + 
+//   "<br />Longitude: " + position.coords.longitude;	
+//   }
+
+    if(window.DeviceMotionEvent) {
+    var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
+    var x, y, z, lastX, lastY, lastZ;
+    x = y = z = lastX = lastY = lastZ = 0;
+
+    window.addEventListener('devicemotion', function(event){
+        var acceleration = event.accelerationIncludingGravity;
+        x = acceleration.x;
+        y = acceleration.y;
+        if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
+            // 用户设备摇动了，触发响应操作
+            // 此处的判断依据是用户设备的加速度大于我们设置的阈值
+            alert('摇了');
+            x.innerHTML="扶摇直上九万里"+event.acceleration.x;
+        }
+        lastX = x;
+        lastY = y;
+    }, false);}else{
+        x.innerHTML="不支持该事件";
     }
-  else{x.innerHTML="Geolocation is not supported by this browser.";}
-  }
-function showPosition(position)
-  {
-  x.innerHTML="Latitude: " + position.coords.latitude + 
-  "<br />Longitude: " + position.coords.longitude;	
-  }
+
+    window.addEventListener('devicemotion', function(event) {
+        document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
+    });
+
+    window.addEventListener('deviceorientation', function(event) {
+        document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
+    });
 </script>
 </body>
 </html>
