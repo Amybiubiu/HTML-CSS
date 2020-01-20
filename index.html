@@ -1,64 +1,89 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p id="demo">测试摇一摇1：</p>
+<p id="request">测试摇一摇1g：</p>
 <p id="demo2">测试摇一摇2g：</p>
 <p id="demo3">测试摇一摇3g：</p>
 <!-- <button onclick="testshake()">试一下</button> -->
 <script>
     alert("test");
-var x=document.getElementById("demo");
-x.innerHTML="扶摇直上九万里";
-// function getLocation()
-//   {
-//   if (navigator.geolocation)
-//     {
-//     navigator.geolocation.getCurrentPosition(showPosition);
+// var x=document.getElementById("demo");
+// x.innerHTML="扶摇直上九万里";
+// // function getLocation()
+// //   {
+// //   if (navigator.geolocation)
+// //     {
+// //     navigator.geolocation.getCurrentPosition(showPosition);
+// //     }
+// //   else{x.innerHTML="Geolocation is not supported by this browser.";}
+// //   }
+// // function showPosition(position)
+// //   {
+// //   x.innerHTML="Latitude: " + position.coords.latitude + 
+// //   "<br />Longitude: " + position.coords.longitude;	
+// //   }
+
+//     if(window.DeviceMotionEvent) {
+//         alert("ceshi1")
+//     var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
+//     var x, y, z, lastX, lastY, lastZ;
+//     x = y = z = lastX = lastY = lastZ = 0;
+
+//     window.addEventListener('devicemotion', function(event){
+//         var acceleration = event.accelerationIncludingGravity;
+//         x = acceleration.x;
+//         y = acceleration.y;
+//         if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
+//             // 用户设备摇动了，触发响应操作
+//             // 此处的判断依据是用户设备的加速度大于我们设置的阈值
+//             alert('摇了');
+//             x.innerHTML="扶摇直上九万里"+event.acceleration.x;
+//         }
+//         lastX = x;
+//         lastY = y;
+//     }, false);}else{
+//         x.innerHTML="不支持该事件";
 //     }
-//   else{x.innerHTML="Geolocation is not supported by this browser.";}
-//   }
-// function showPosition(position)
-//   {
-//   x.innerHTML="Latitude: " + position.coords.latitude + 
-//   "<br />Longitude: " + position.coords.longitude;	
-//   }
 
-    if(window.DeviceMotionEvent) {
-        alert("ceshi1")
-    var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
-    var x, y, z, lastX, lastY, lastZ;
-    x = y = z = lastX = lastY = lastZ = 0;
+//     window.addEventListener('devicemotion', function(event) {
+//         console.log(event);
+//         document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
+//     });
 
-    window.addEventListener('devicemotion', function(event){
-        var acceleration = event.accelerationIncludingGravity;
-        x = acceleration.x;
-        y = acceleration.y;
-        if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed) {
-            // 用户设备摇动了，触发响应操作
-            // 此处的判断依据是用户设备的加速度大于我们设置的阈值
-            alert('摇了');
-            x.innerHTML="扶摇直上九万里"+event.acceleration.x;
-        }
-        lastX = x;
-        lastY = y;
-    }, false);}else{
-        x.innerHTML="不支持该事件";
-    }
+//     if(window.DeviceOrientationEvent){
+//         alert("ceshi2");
+//         window.addEventListener('deviceorientation', function(event) {
+//         alert("摇了2");
+//         console.log(event);
+//         document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
+//     })}else{
+//         document.getElementById("demo3").innerHTML="没有该事件";
+//     };
+  if (location.protocol != 'https:') {
+   location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  }
+  if(window.DeviceOrientationEvent){
+        alert("ceshi2");}
+function requestT () {
+      if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function') {
+          
+          DeviceMotionEvent.requestPermission()
+          .then(response => {
+	alert('Orientation tracking '+ response);
+          
+            if (response == 'granted') {
+              window.addEventListener('devicemotion', (e) => {
+               document.getElementById('request').style.visibility='hidden';
+              })
+            }
+          })
+      .catch(console.error)
+      }else {
+          alert('DeviceMotionEvent is not defined');
+      }
 
-    window.addEventListener('devicemotion', function(event) {
-        console.log(event);
-        document.getElementById("demo2").innerHTML="扶摇直上九万里"+event.acceleration.x;
-    });
-
-    if(window.DeviceOrientationEvent){
-        alert("ceshi2");
-        window.addEventListener('deviceorientation', function(event) {
-        alert("摇了2");
-        console.log(event);
-        document.getElementById("demo3").innerHTML="orientation"+event.alpha + ' : ' + event.beta + ' : ' + event.gamma;
-    })}else{
-        document.getElementById("demo3").innerHTML="没有该事件";
-    };
+  }
+  document.getElementById('request').onclick = requestT;
 </script>
 </body>
 </html>
