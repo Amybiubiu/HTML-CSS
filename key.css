@@ -1,0 +1,58 @@
+.container {
+    border: 2px solid blue;
+    width: 300px;
+    height: 400px;
+    text-align: center; /*水平居中*/
+  }
+  .blue {
+    height: 200px;
+    width: 300px;
+    background-color: royalblue;
+    font-size: 32px;
+  }
+  .green {
+    height: 200px;
+    width: 300px;
+    background-color: greenyellow;
+    font-size: 32px;
+    display: table; /*垂直居中*/
+  }
+  .text {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .blue:hover {
+    /*考察鼠标移动改变透明度*/
+    opacity: 0.2;
+  }
+  h1 {
+    animation-duration: 5s;
+    animation-name: slide;
+  }
+  @keyframes slide {
+    from {
+      margin-left: 100%;
+      width: 100%;
+      color: red;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+      color: black;
+    }
+  }
+  .box {
+    border: 3px solid bisque;
+    width: 500px;
+  }
+  .poem {
+    color: white;
+    background: pink;
+    width: 200px;
+    padding: 30px; 
+    position: relative;
+    left: 20px;
+    top: 40px;
+  }
+  
